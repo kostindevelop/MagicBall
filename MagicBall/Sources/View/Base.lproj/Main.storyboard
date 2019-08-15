@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TsB-AD-uRX">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -13,7 +13,7 @@
         <!--Start Controller-->
         <scene sceneID="Rfm-Fj-XmW">
             <objects>
-                <viewController id="wCS-ZY-dAZ" customClass="StartController" customModule="_ball" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="wCS-ZY-dAZ" customClass="StartController" customModule="MagicBall" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JWD-y9-ebQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -44,22 +44,30 @@
                         <color key="backgroundColor" red="0.08235294118" green="0.1647058824" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <viewLayoutGuide key="safeArea" id="Z8P-TP-7Sl"/>
                     </view>
+                    <navigationItem key="navigationItem" id="vnI-b9-gkj"/>
                     <connections>
-                        <outlet property="imgPhone" destination="TBo-UQ-O6S" id="eEd-ah-3DW"/>
+                        <outlet property="imgPhone" destination="KkG-BQ-WjM" id="hHD-6x-Xo5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Py5-ud-sUO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1317" y="19"/>
+            <point key="canvasLocation" x="131.8840579710145" y="18.75"/>
         </scene>
         <!--Ball Controller-->
         <scene sceneID="FsZ-n4-zH2">
             <objects>
-                <viewController storyboardIdentifier="BallController" id="KIp-x4-Eje" customClass="BallController" customModule="_ball" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BallController" id="KIp-x4-Eje" customClass="BallController" customModule="MagicBall" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MN5-Xa-n5k">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="duD-T8-fsd">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="didTouchScreen:" destination="KIp-x4-Eje" eventType="touchUpInside" id="upy-id-i7V"/>
+                                </connections>
+                            </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="magic_ball" translatesAutoresizingMaskIntoConstraints="NO" id="ChK-Ga-7Wg">
                                 <rect key="frame" x="-183" y="150" width="781" height="598"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -76,11 +84,17 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="settings"/>
                                 <connections>
-                                    <segue destination="ZWd-Tu-ZxD" kind="show" id="Uxr-Xm-yyO"/>
+                                    <action selector="didTapSettingsButton:" destination="KIp-x4-Eje" eventType="touchUpInside" id="vdb-UM-jWg"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.08235294118" green="0.1647058824" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="duD-T8-fsd" firstAttribute="top" secondItem="y1U-fL-BXK" secondAttribute="top" id="Gyc-W6-4QM"/>
+                            <constraint firstItem="y1U-fL-BXK" firstAttribute="bottom" secondItem="duD-T8-fsd" secondAttribute="bottom" id="muF-KJ-KLa"/>
+                            <constraint firstItem="y1U-fL-BXK" firstAttribute="trailing" secondItem="duD-T8-fsd" secondAttribute="trailing" id="pYF-yO-3sF"/>
+                            <constraint firstItem="duD-T8-fsd" firstAttribute="leading" secondItem="y1U-fL-BXK" secondAttribute="leading" id="seI-ta-Nip"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="y1U-fL-BXK"/>
                     </view>
                     <navigationItem key="navigationItem" id="ojc-qK-1JU"/>
@@ -90,12 +104,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fNi-aA-XoH" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="181" y="19"/>
+            <point key="canvasLocation" x="952" y="19"/>
         </scene>
-        <!--View Controller-->
+        <!--Settings Controller-->
         <scene sceneID="Azc-Ef-VRg">
             <objects>
-                <viewController id="ZWd-Tu-ZxD" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SettingsController" id="ZWd-Tu-ZxD" customClass="SettingsController" customModule="MagicBall" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Wj3-cy-UBQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -105,25 +119,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Hj-dt-QeC" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="916" y="19"/>
+            <point key="canvasLocation" x="1826.0869565217392" y="18.75"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="MGP-eo-J7O">
+        <scene sceneID="Mni-cw-WzM">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bhO-O3-Dhf" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="TsB-AD-uRX" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6mS-qv-MWm">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="y6c-eE-3fg">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="KIp-x4-Eje" kind="relationship" relationship="rootViewController" id="33K-2v-TQB"/>
+                        <segue destination="wCS-ZY-dAZ" kind="relationship" relationship="rootViewController" id="Fax-08-Dkh"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="owc-Ww-5Mi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eQi-Ko-kE2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-538" y="19"/>
+            <point key="canvasLocation" x="-778.26086956521749" y="18.75"/>
         </scene>
     </scenes>
     <resources>
