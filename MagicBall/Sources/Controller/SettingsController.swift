@@ -21,12 +21,25 @@ class SettingsController: UIViewController {
     
     private func configuredUI() {
         navigationItem.title = "Settings"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(addItemToLocalBase))
-
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(openAddItemConroller))
     }
     
-    @objc private func addItemToLocalBase() {
+    @objc private func openAddItemConroller() {
+        let alertController = UIAlertController(title: "Add new answer!", message: "Add new answer!", preferredStyle: UIAlertController.Style.alert)
+        alertController.addTextField { textField in
+            textField.placeholder = "new answer"
+        }
+        let addAction = UIAlertAction(title: "Add", style: .default) { [weak alertController] _ in
+            guard let alertController = alertController, let textField = alertController.textFields?.first else { return }
+            print("New answer \(String(describing: textField.text))")
+        }
         
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
+            print("Cancel")
+        }
+        alertController.addAction(addAction)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true, completion: nil)
     }
 
 }
