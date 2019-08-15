@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  StartController.swift
 //  MagicBall
 //
 //  Created by Konstantin Igorevich on 13.08.2019.
@@ -17,15 +17,10 @@ class StartController: BaseViewController {
         configuredUI()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.isNavigationBarHidden = true
-    }
-    
     override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?){
         if motion == .motionShake
         {
-            present(getControllerWith(identifire: "BallController"), animated: false, completion: nil)
+            imgPhone.shake()
         }
     }
     
@@ -36,6 +31,11 @@ class StartController: BaseViewController {
         imgPhone.layer.shadowRadius = 7.0
         imgPhone.layer.masksToBounds = false
         imgPhone.transform = .init(rotationAngle: 6)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Settings", style: .plain, target: self, action: #selector(openSettingsScreen))
+    }
+    
+    @objc private func openSettingsScreen() {
+        navigationController?.pushViewController(getControllerWith(identifire: "SettingsController"), animated: true)
     }
 }
 

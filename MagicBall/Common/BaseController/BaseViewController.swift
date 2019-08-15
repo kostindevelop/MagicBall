@@ -12,6 +12,15 @@ class BaseViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationBarClearBackground()
+    }
+    
+    
+    private func navigationBarClearBackground() {
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.view.backgroundColor = .clear
     }
     
     func getControllerWith(identifire: String) -> UIViewController {
