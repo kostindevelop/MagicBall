@@ -36,7 +36,17 @@ class StartController: BaseViewController {
         {
             imgPhone.shake()
             viewAnswer.shake()
-            hiddenViewAnswer(state: .show)
+            AnswerServices.getAnswer(task: .get) { (result, error) in
+                if let error = error {
+                    print(error.localizedDescription)
+                }
+                guard let answerModel = result else { return }
+                DispatchQueue.main.async {
+                    self.labelAnswer.text = answerModel.magic?.answer
+                    self.hiddenViewAnswer(state: .show)
+                }
+            }
+            
         }
     }
     
@@ -66,7 +76,7 @@ class StartController: BaseViewController {
                 self.viewAnswer.alpha = 1
                 self.viewAnswer.transform = .identity
             default:
-                print("sdasdads")
+                print("Error hidden answer view")
             }
         }) { (_) in }
     }
