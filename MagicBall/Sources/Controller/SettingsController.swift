@@ -32,6 +32,10 @@ class SettingsController: UIViewController {
         let addAction = UIAlertAction(title: "Add", style: .default) { [weak alertController] _ in
             guard let alertController = alertController, let textField = alertController.textFields?.first else { return }
             print("New answer \(String(describing: textField.text))")
+            if let text = textField.text {
+                self.answerItemsArray.append(text)
+                self.tableView.reloadData()
+            }
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in

@@ -18,32 +18,67 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ask a Question!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QrQ-HA-Yvp">
-                                <rect key="frame" x="87" y="143" width="240" height="76"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ask a Question!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QrQ-HA-Yvp">
+                                <rect key="frame" x="24" y="214" width="366" height="27"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="magic_ball" translatesAutoresizingMaskIntoConstraints="NO" id="KkG-BQ-WjM">
-                                <rect key="frame" x="18" y="223" width="376" height="450"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="magic_ball" translatesAutoresizingMaskIntoConstraints="NO" id="KkG-BQ-WjM">
+                                <rect key="frame" x="24" y="265" width="366" height="366"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="KkG-BQ-WjM" secondAttribute="height" multiplier="1:1" id="ecf-v1-hmm"/>
+                                </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Shake the phone" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xGN-MX-4A5">
-                                <rect key="frame" x="77" y="684" width="258" height="74"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shake the phone" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xGN-MX-4A5">
+                                <rect key="frame" x="24" y="655" width="366" height="26"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t4Q-Qg-WxX">
+                                <rect key="frame" x="116" y="364" width="183" height="168"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Возможно вы правы!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="seA-zK-D3c">
+                                        <rect key="frame" x="0.0" y="0.0" width="183" height="168"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="t4Q-Qg-WxX" secondAttribute="height" multiplier="73:67" id="OvF-ha-2Uf"/>
+                                    <constraint firstItem="seA-zK-D3c" firstAttribute="top" secondItem="t4Q-Qg-WxX" secondAttribute="top" id="auZ-8g-bL9"/>
+                                    <constraint firstAttribute="bottom" secondItem="seA-zK-D3c" secondAttribute="bottom" id="igC-wY-WLA"/>
+                                    <constraint firstAttribute="trailing" secondItem="seA-zK-D3c" secondAttribute="trailing" id="xX0-Aj-X97"/>
+                                    <constraint firstItem="seA-zK-D3c" firstAttribute="leading" secondItem="t4Q-Qg-WxX" secondAttribute="leading" id="ylO-wA-aCy"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.08235294118" green="0.1647058824" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="Z8P-TP-7Sl" firstAttribute="trailing" secondItem="QrQ-HA-Yvp" secondAttribute="trailing" constant="24" id="1Wu-wH-WUy"/>
+                            <constraint firstItem="xGN-MX-4A5" firstAttribute="top" secondItem="KkG-BQ-WjM" secondAttribute="bottom" constant="24" id="327-Q6-o8V"/>
+                            <constraint firstItem="QrQ-HA-Yvp" firstAttribute="leading" secondItem="Z8P-TP-7Sl" secondAttribute="leading" constant="24" id="4lL-Ta-anM"/>
+                            <constraint firstItem="xGN-MX-4A5" firstAttribute="leading" secondItem="Z8P-TP-7Sl" secondAttribute="leading" constant="24" id="APN-2m-6X2"/>
+                            <constraint firstItem="t4Q-Qg-WxX" firstAttribute="width" secondItem="KkG-BQ-WjM" secondAttribute="width" multiplier="0.5" id="KIJ-hU-CZO"/>
+                            <constraint firstItem="KkG-BQ-WjM" firstAttribute="leading" secondItem="Z8P-TP-7Sl" secondAttribute="leading" constant="24" id="Lgv-nK-ECg"/>
+                            <constraint firstItem="KkG-BQ-WjM" firstAttribute="top" secondItem="QrQ-HA-Yvp" secondAttribute="bottom" constant="24" id="MZd-yL-weI"/>
+                            <constraint firstItem="Z8P-TP-7Sl" firstAttribute="trailing" secondItem="xGN-MX-4A5" secondAttribute="trailing" constant="24" id="TVQ-nB-xcz"/>
+                            <constraint firstItem="KkG-BQ-WjM" firstAttribute="centerY" secondItem="JWD-y9-ebQ" secondAttribute="centerY" id="cBM-KE-zYz"/>
+                            <constraint firstItem="KkG-BQ-WjM" firstAttribute="centerX" secondItem="JWD-y9-ebQ" secondAttribute="centerX" id="dfi-si-MNZ"/>
+                            <constraint firstItem="t4Q-Qg-WxX" firstAttribute="centerY" secondItem="KkG-BQ-WjM" secondAttribute="centerY" id="lcm-BW-CT7"/>
+                            <constraint firstItem="t4Q-Qg-WxX" firstAttribute="centerX" secondItem="KkG-BQ-WjM" secondAttribute="centerX" id="uFr-j4-bbw"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Z8P-TP-7Sl"/>
                     </view>
                     <navigationItem key="navigationItem" id="vnI-b9-gkj"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="imgPhone" destination="KkG-BQ-WjM" id="hHD-6x-Xo5"/>
+                        <outlet property="labelAnswer" destination="seA-zK-D3c" id="CJp-wf-BsL"/>
+                        <outlet property="viewAnswer" destination="t4Q-Qg-WxX" id="ktA-Ym-cCF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Py5-ud-sUO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -123,7 +158,6 @@
         <!--Navigation Controller-->
         <scene sceneID="Mni-cw-WzM">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eQi-Ko-kE2" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="TsB-AD-uRX" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="y6c-eE-3fg">
@@ -139,11 +173,12 @@
                         <segue destination="wCS-ZY-dAZ" kind="relationship" relationship="rootViewController" id="Fax-08-Dkh"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eQi-Ko-kE2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-810" y="-72"/>
         </scene>
     </scenes>
     <resources>
-        <image name="magic_ball" width="185" height="185"/>
+        <image name="magic_ball" width="240" height="240"/>
     </resources>
 </document>
