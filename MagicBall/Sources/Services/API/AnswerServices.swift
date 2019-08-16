@@ -70,7 +70,6 @@ final class AnswerServices {
             }
                let answerModel = try? JSONDecoder().decode(AnswerModel.self, from: jsonData)
             DispatchQueue.main.async {
-                print(jsonData.json)
                 completion(answerModel, nil)
             }
         }

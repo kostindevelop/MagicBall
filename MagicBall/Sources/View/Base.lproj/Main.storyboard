@@ -77,7 +77,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="imgPhone" destination="KkG-BQ-WjM" id="hHD-6x-Xo5"/>
-                        <outlet property="labelAnswer" destination="seA-zK-D3c" id="CJp-wf-BsL"/>
+                        <outlet property="labelAnswer" destination="seA-zK-D3c" id="lyp-IG-P1W"/>
                         <outlet property="viewAnswer" destination="t4Q-Qg-WxX" id="ktA-Ym-cCF"/>
                     </connections>
                 </viewController>
