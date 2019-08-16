@@ -52,14 +52,62 @@ class SettingsController: UIViewController {
 // MARK: - UITableViewDelegate, UITableViewDataSource
 
 extension SettingsController: UITableViewDelegate, UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case 0: return "Enable/Disable personal answer"
+        case 1: return "Answer options"
+        default:
+            return ""
+        }
+    }
+
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        switch section {
+        case 0:
+            let myLabel = UILabel()
+            myLabel.frame = CGRect(x: 24, y: 0, width: self.view.frame.width, height: 30)
+            myLabel.font = UIFont.boldSystemFont(ofSize: 12)
+            myLabel.textColor = .gray
+            myLabel.text = "When turned on, personal answers will be used"
+            let headerView = UIView()
+            headerView.addSubview(myLabel)
+            return headerView
+        default:
+            return UIView()
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return answerItemsArray.count
+        switch section {
+        case 0: return 1
+        case 1: return answerItemsArray.count
+        default:
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let answerCell = tableView.dequeueReusableCell(withIdentifier: "AnswerCell", for: indexPath) as! AnswerCell
-        answerCell.lbAnswerItem.text = answerItemsArray[indexPath.row]
-        return answerCell
+        switch indexPath.section {
+        case 0:
+            let answerEnableCell = tableView.dequeueReusableCell(withIdentifier: "AnswerEnableCell", for: indexPath) as! AnswerEnableCell
+            answerEnableCell.delegate = self
+            answerEnableCell.switcherLocalAnswer.isOn = UserDefault.shared.localAnswerIsEnable()
+            return answerEnableCell
+        case 1:
+            let answerCell = tableView.dequeueReusableCell(withIdentifier: "AnswerCell", for: indexPath) as! AnswerCell
+            let localAnswerSwitcher = UserDefault.shared.localAnswerIsEnable()
+            navigationItem.rightBarButtonItem?.isEnabled = localAnswerSwitcher
+            answerCell.enable(on: localAnswerSwitcher)
+            answerCell.lbAnswerItem.text = answerItemsArray[indexPath.row]
+            return answerCell
+        default:
+            return UITableViewCell()
+        }
+       
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
@@ -71,6 +119,13 @@ extension SettingsController: UITableViewDelegate, UITableViewDataSource {
         deleteAction.backgroundColor = .red
         return [deleteAction]
     }
-    
-    
+}
+
+
+// MARK: - SwitcherLocalAnswerProtocol
+
+extension SettingsController: SwitcherLocalAnswerProtocol {
+    func didTapEnabledLocalAnswerSwitcher() {
+        tableView.reloadData()
+    }
 }
