@@ -21,6 +21,9 @@ class StartController: BaseViewController {
     
     private var hiddenAnswer: HiddenAnswer?
     
+    private var timer = Timer()
+    private var counter = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configuredUI()
@@ -36,9 +39,37 @@ class StartController: BaseViewController {
         {
             imgPhone.shake()
             viewAnswer.shake()
-            hiddenViewAnswer(state: .show)
+            AnswerServices.getAnswer(task: .get) { (result, error) in
+                if let error = error {
+                    print(error.localizedDescription)
+                }
+                guard let answerModel = result else { return }
+                DispatchQueue.main.async {
+                    self.labelAnswer.text = answerModel.magic?.answer
+                    self.hiddenViewAnswer(state: .show)
+                    self.runTimer()
+                }
+            }
+            
         }
     }
+    
+    func runTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self,   selector: (#selector(StartController.updateTimer)), userInfo: nil, repeats: true)
+    }
+    
+    @objc private func updateTimer() {
+        counter += 1
+        if counter == 3 {
+            counter = 0
+            timer.invalidate()
+            DispatchQueue.main.async {
+                self.hiddenViewAnswer(state: .hidden)
+                self.view.layoutIfNeeded()
+            }
+        }
+    }
+    
     
     private func configuredUI() {
         imgPhone.layer.shadowColor = UIColor(named: "white")?.cgColor
@@ -61,12 +92,12 @@ class StartController: BaseViewController {
             switch statusAnswer {
             case .hidden:
                 self.viewAnswer.alpha = 0
-                self.viewAnswer.transform = CGAffineTransform(scaleX: 0, y: 0)
+                self.viewAnswer.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
             case .show:
                 self.viewAnswer.alpha = 1
                 self.viewAnswer.transform = .identity
             default:
-                print("sdasdads")
+                print("Error hidden answer view")
             }
         }) { (_) in }
     }
