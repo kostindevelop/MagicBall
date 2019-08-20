@@ -72,6 +72,7 @@ class StartController: BaseViewController {
     
     
     private func configuredUI() {
+        hiddenViewAnswer(state: .hidden)
         imgPhone.layer.shadowColor = UIColor(named: "white")?.cgColor
         imgPhone.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
         imgPhone.layer.shadowOpacity = 1.0
@@ -96,8 +97,6 @@ class StartController: BaseViewController {
             case .show:
                 self.viewAnswer.alpha = 1
                 self.viewAnswer.transform = .identity
-            default:
-                print("Error hidden answer view")
             }
         }) { (_) in }
     }
