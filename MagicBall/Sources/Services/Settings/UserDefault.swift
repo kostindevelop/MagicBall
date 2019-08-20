@@ -10,6 +10,7 @@ import Foundation
 
 struct DefaultKey {
     static let localAnswerSwitcher = "localAnswer"
+    static let firstStartApplication = "firstStartApp"
 }
 
 class UserDefault {
@@ -25,5 +26,14 @@ class UserDefault {
     
     func localAnswerIsEnable() -> Bool {
         return self.defaults.bool(forKey: DefaultKey.localAnswerSwitcher)
+    }
+    
+    func firstStartApplication(isFirst: Bool) {
+        self.defaults.set(isFirst, forKey: DefaultKey.firstStartApplication)
+        self.defaults.synchronize()
+    }
+    
+    func firstStartApplication() -> Bool {
+        return self.defaults.bool(forKey: DefaultKey.firstStartApplication)
     }
 }

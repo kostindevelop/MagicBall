@@ -14,7 +14,7 @@ class SettingsController: UIViewController {
     
     var myAnswers = [Answer]()
     
-    let answersManager = AnswersManager.shared
+    private let answersManager = AnswersManager.shared
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,16 +99,16 @@ extension SettingsController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let localAnswerSwitcher = UserDefault.shared.localAnswerIsEnable()
         switch indexPath.section {
         case 0:
             let answerEnableCell = tableView.dequeueReusableCell(withIdentifier: "AnswerEnableCell", for: indexPath) as! AnswerEnableCell
             answerEnableCell.delegate = self
-            answerEnableCell.switcherLocalAnswer.isOn = UserDefault.shared.localAnswerIsEnable()
+            answerEnableCell.switcherLocalAnswer.isOn = localAnswerSwitcher
+            navigationItem.rightBarButtonItem?.isEnabled = localAnswerSwitcher
             return answerEnableCell
         case 1:
             let answerCell = tableView.dequeueReusableCell(withIdentifier: "AnswerCell", for: indexPath) as! AnswerCell
-            let localAnswerSwitcher = UserDefault.shared.localAnswerIsEnable()
-            navigationItem.rightBarButtonItem?.isEnabled = localAnswerSwitcher
             answerCell.enable(on: localAnswerSwitcher)
             answerCell.lbAnswerItem.text = myAnswers[indexPath.row].text
             return answerCell

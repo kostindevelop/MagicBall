@@ -35,9 +35,6 @@ final class AnswersManager {
             do {
                 try context.save()
                 print("save successfully")
-                
-                
-                
             } catch {
                 let nserror = error as NSError
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
